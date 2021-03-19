@@ -8,7 +8,11 @@ define(['jquery'], function ($) {
     const qtyIdentifier = element.qtyIdentifier;
     const priceIdentifier = element.priceIdentifier;
     const tierPricesData = element.tierPrices;
-    const tierPrices = $(tierPricesData).data('tierjs');
+    const jsonDataAttribute = element.jsonDataAttribute;
+    const tierPrices = $(tierPricesData).data(jsonDataAttribute);
+    const tierPricesValue = element.tierPricesValue;
+    const priceDataAttribute = element.priceDataAttribute;
+  
 
     const priceContainer = $(priceIdentifier);
     const originalPriceHtml = priceContainer.html();
@@ -29,5 +33,13 @@ define(['jquery'], function ($) {
         }
         isUpdated = true;
     });
+    var updatePrice = function () {
+      $(tierPricesValue).change(function () {
+          $(qtyIdentifier).val($(tierPricesValue +':checked').val());
+          priceContainer.html($(tierPricesValue +':checked').attr(priceDataAttribute));
+      });
+    };   
+    updatePrice();
   }
+ 
 }); 

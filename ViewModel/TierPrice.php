@@ -31,7 +31,10 @@ class TierPrice implements ArgumentInterface
         return $this->serializer->serialize([
             'qtyIdentifier' => '.product-add-form #qty',
             'priceIdentifier' => '.product-info-price span.price',
-            'tierPrices' => '#data-tier-prices-js'
+            'tierPrices' => 'ul.prices-tier.items',
+            'jsonDataAttribute' => 'tierjs',
+            'tierPricesValue' => 'input.radio-btn',
+            'priceDataAttribute' => 'data-price'
         ]);
     }
 }
